@@ -5,7 +5,8 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>ASE/EOS Conference Program - January 6-7, 2027</title>
-<style>
+
+  <style>
 :root {
   --navy: #004466;
   --navy-dark: #07334b;
@@ -74,7 +75,15 @@ nav button {
 nav button:hover { background: #e0ebf1; }
 nav button.active { background: var(--navy); color: #fff; }
 nav button:focus-visible { outline: 3px solid #76b7e5; outline-offset: 3px; }
-.day { display: none; max-width: 1240px; padding: 0 24px; margin: 28px auto; }
+
+.day {
+  display: none;
+  width: 96%;
+  max-width: none;
+  padding: 0;
+  margin: 28px auto;
+}
+
 .day.active { display: block; }
 .day h2 { margin: 0 0 16px; font-size: 1.24rem; letter-spacing: -.02em; color: var(--navy-dark); font-weight: 680; }
 .table-wrap {
@@ -177,7 +186,7 @@ footer strong { color: #365367; font-weight: 650; }
   .venue { font-size: .77rem; }
   nav { padding: 10px; }
   nav button { flex: 1; max-width: 170px; }
-  .day { margin: 20px auto; padding: 0 14px; }
+  .day { width: 100%; margin: 20px auto; padding: 0 14px; }
   .day h2 { font-size: 1.07rem; margin-bottom: 10px; }
   body.js-ready .table-wrap { display: none; }
   body.js-ready .mobile-agenda { display: block; }
