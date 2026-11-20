@@ -1,630 +1,422 @@
-
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ASE/EOS Conference Program - January 6-7, 2027</title>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ASE/EOS Conference Program - January 6-7, 2027</title>
+<style>
+:root {
+  --navy: #004466;
+  --navy-dark: #07334b;
+  --ink: #233746;
+  --muted: #61717e;
+  --line: #dce5eb;
+  --paper: #ffffff;
+  --bg: #f3f6f8;
+  --talk-blue: #4C94D8;
+}
+* { box-sizing: border-box; }
 body {
-  font-family: 'Inter', sans-serif;
   margin: 0;
-  background: #f8f9fa;
-  color: #333;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
 }
 header {
-  background: #004466;
-  color: #fff;
-  padding: 1rem;
+  background: linear-gradient(115deg, #07334b 0%, #004466 65%, #155b78 100%);
+  color: white;
   text-align: center;
+  padding: 34px 18px 29px;
+  border-bottom: 3px solid #78b3d5;
 }
 header h1 {
   margin: 0;
-  font-size: 1.6rem;
-  font-weight: 600;
+  font-size: clamp(1.65rem, 3vw, 2.25rem);
+  line-height: 1.2;
+  font-weight: 680;
+  letter-spacing: -.035em;
 }
+.conference-date {
+  display: inline-block;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: 500;
+  letter-spacing: .04em;
+  margin-top: 10px;
+  color: #d9eaf4;
+}
+.venue { font-size: .84rem; color: #d3e7f0; margin: 9px 0 0; }
 nav {
   display: flex;
   justify-content: center;
-  gap: 1rem;
-  background: #eaeaea;
-  padding: 0.5rem;
+  gap: 8px;
+  padding: 12px 16px;
+  background: #fff;
+  border-bottom: 1px solid var(--line);
 }
 nav button {
-  border: none;
-  background: #ccc;
-  padding: 0.4rem 0.8rem;
-  border-radius: 6px;
+  min-width: 120px;
+  font: inherit;
+  font-size: .88rem;
+  font-weight: 600;
+  color: var(--navy);
+  background: #eef3f6;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  padding: 9px 20px;
   cursor: pointer;
-  font-size: 0.95rem;
-  font-family: 'Inter', sans-serif;
+  transition: background .15s ease, color .15s ease;
 }
-nav button.active {
-  background: #004466;
-  color: #fff;
-}
-.day {
-  display: none;
-  max-width: 1200px;
-  margin: 1.5rem auto;
-  padding: 0 0.5rem;
-}
-.day.active {
-  display: block;
-}
-.day h2 {
-  font-size: 1.1rem;
-  color: #004466;
-  margin: 0 0 .7rem;
-}
+nav button:hover { background: #e0ebf1; }
+nav button.active { background: var(--navy); color: #fff; }
+nav button:focus-visible { outline: 3px solid #76b7e5; outline-offset: 3px; }
+.day { display: none; max-width: 1240px; padding: 0 24px; margin: 28px auto; }
+.day.active { display: block; }
+.day h2 { margin: 0 0 16px; font-size: 1.24rem; letter-spacing: -.02em; color: var(--navy-dark); font-weight: 680; }
 .table-wrap {
   overflow-x: auto;
-  background: white;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 6px 24px rgba(12,48,69,.05);
 }
 table.schedule {
   width: 100%;
   min-width: 770px;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   table-layout: fixed;
-  margin-bottom: 1.5rem;
-  font-size: 0.9rem;
-  line-height: 1.42;
+  font-size: .9rem;
+  line-height: 1.45;
 }
-table.schedule th,
-table.schedule td {
-  border: 1px solid #ddd;
-  padding: 0.5rem;
+.schedule th, .schedule td {
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 10px 15px;
   vertical-align: top;
 }
-table.schedule th {
-  background: #004466;
-  color: #fff;
-  text-align: center;
-  font-size: 1rem;
-  font-weight: 600;
-}
-table.schedule td.time {
-  width: 13%;
-  font-weight: 600;
-  background: #f1f3f5;
-  text-align: center;
-  font-size: 0.85rem;
-  white-space: nowrap;
-}
-table.schedule td.session {
-  width: 44%;
-}
-table.schedule .event {
+.schedule tr > :last-child { border-right: 0; }
+.schedule tr:last-child > * { border-bottom: 0; }
+.schedule th {
+  background: var(--navy);
+  color: white;
   text-align: center;
   vertical-align: middle;
-}
-table.schedule .event strong {
-  display: block;
-}
-.event-detail {
-  display: block;
-  font-weight: 400;
-  margin-top: 2px;
-}
-.highlight-keynote {
-  background: #fff3cd !important;
-  border-left: 4px solid #0077b6;
-  text-align: center;
+  font-size: .89rem;
   font-weight: 600;
+  border-color: rgba(255,255,255,.16);
+  padding: 16px 9px;
 }
-.highlight-break {
-  background: #e8f4fd !important;
-  border-left: 4px solid #ffb703;
+.schedule th small { display: inline-block; margin-top: 4px; color: #d7e7f0; font-size: .75rem; font-weight: 400; }
+.schedule td.time {
+  background: #f2f6f8;
+  color: #345163;
+  font-weight: 650;
   text-align: center;
-  font-weight: 600;
-}
-.highlight-panel {
-  background: #e9f7ef !important;
-  border-left: 4px solid #2ca58d;
-  text-align: center;
-  font-weight: 600;
-}
-.highlight-intro {
-  background: rgba(243, 232, 255, 0.4) !important;
-  border-left: 4px solid rgba(157, 78, 221, 0.4);
-  text-align: center;
-}
-.venue {
-  font-size: 0.9em;
-  color: #ffffff;
-  margin-top: 0.2em;
-  text-align: center;
-}
-.session h3 {
-  margin: 0 0 4px;
-  font-size: 1rem;
-  line-height: 1.3;
-}
-.session .convener {
-  color: #555;
-  font-size: .86rem;
-  margin-bottom: 12px;
-}
-
-/* Speaker names and titles: Word blue + italic */
-:root {
-  --talk-blue: #4C94D8;
-}
-.talk {
-  margin: 0 0 9px;
-}
-.talk strong.speaker-name {
-  display: block;
-  color: var(--talk-blue);
-  font-weight: 600;
-  font-style: italic;
-}
-.talk .talk-title {
-  color: var(--talk-blue);
-  font-style: italic;
-  font-weight: 400;
-  margin-top: 1px;
-  overflow-wrap: anywhere;
-}
-.highlight-qa {
-  margin-top: 12px;
-  padding-top: 8px;
-  border-top: 1px dashed #ddd;
-  font-style: italic;
-  color: #666;
-}
-.programme-note {
   font-size: .82rem;
-  font-style: italic;
-  color: #666;
-  line-height: 1.5;
-  margin: 8px 2px 20px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  padding: 12px 5px;
+  vertical-align: middle;
 }
-footer {
-  text-align: center;
-  font-size: 0.85rem;
-  color: #666;
-  padding: 1rem;
-  margin-top: 1rem;
-  border-top: 1px solid #ddd;
+.schedule .parallel-row .time { vertical-align: top; padding-top: 22px; background: #eaf1f5; color: var(--navy); }
+.schedule td.session { padding: 20px 22px 18px; background: #fff; }
+.schedule .parallel-row td.session + td.session { border-left: 0; }
+.schedule .event, .mobile-event { text-align: center; vertical-align: middle; }
+.event strong, .mobile-event strong { display: block; font-weight: 650; }
+.event-detail { display: block; font-weight: 400; margin-top: 3px; }
+.highlight-keynote { background: #fff5df; border-left: 3px solid #c18a32; color: #694a16; }
+.highlight-break { background: #eaf4fb; border-left: 3px solid #7daac8; color: #245674; }
+.highlight-panel { background: #eaf5f0; border-left: 3px solid #65a78f; color: #255c4a; }
+.highlight-intro { background: #f4f1fa; border-left: 3px solid #b2a4cc; color: #4b4265; }
+.session h3 {
+  margin: 0;
+  color: var(--navy-dark);
+  font-size: 1.08rem;
+  font-weight: 700;
+  line-height: 1.38;
+  letter-spacing: -.015em;
 }
-.mobile-agenda {
-  display: none;
+/* Convener label and name sit on one line. */
+.session .convener {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  column-gap: 7px;
+  row-gap: 2px;
+  margin: 13px 0 18px;
+  padding: 9px 12px;
+  background: #edf3f7;
+  border-left: 3px solid #407998;
+  border-radius: 4px;
+  color: var(--navy);
+  font-size: .88rem;
+  line-height: 1.45;
+  font-style: normal;
 }
-.mobile-venues {
-  color: #5a6974;
-  font-size: .78rem;
-  margin: 0 0 10px;
-}
-* {
-  box-sizing: border-box;
-}
-nav button:focus-visible {
-  outline: 3px solid #76b7e5;
-  outline-offset: 2px;
-}
-@media (max-width: 700px) {
-  header h1 {
-    font-size: 1.35rem;
-  }
-  .day {
-    margin: 1rem auto;
-    padding: 0 10px;
-  }
-  .day h2 {
-    font-size: 1rem;
-  }
-  body.js-ready .table-wrap {
-    display: none;
-  }
-  body.js-ready .mobile-agenda {
-    display: block;
-  }
-  .mobile-card {
-    background: white;
-    border: 1px solid #d9e1e7;
-    border-radius: 8px;
-    margin-bottom: 9px;
-    overflow: hidden;
-  }
-  .mobile-time {
-    background: #eaf1f5;
-    color: #004466;
-    font-size: .83rem;
-    font-weight: 600;
-    padding: 8px 10px;
-  }
-  .mobile-event {
-    text-align: center;
-    padding: 11px;
-  }
-  .mobile-event strong {
-    display: block;
-  }
-  .mobile-parallel {
-    padding: 11px;
-  }
-  .mobile-parallel + .mobile-parallel {
-    border-top: 2px solid #d9e1e7;
-  }
-  .mobile-location {
-    color: #596b7a;
-    text-transform: uppercase;
-    font-size: .75rem;
-    font-weight: 600;
-    letter-spacing: .04em;
-    margin-bottom: 7px;
-  }
-  footer {
-    line-height: 1.65;
-  }
+.convener-label { color: #536b7a; font-weight: 500; }
+.convener-name { font-weight: 700; }
+.talk { padding: 9px 0 10px; border-bottom: 1px solid #eef2f5; margin: 0; }
+.talk:first-of-type { padding-top: 0; }
+.talk strong.speaker-name { display: block; color: var(--talk-blue); font-size: .95rem; font-weight: 700; font-style: italic; }
+.talk .talk-title { color: var(--talk-blue); font-style: italic; font-weight: 400; margin-top: 2px; overflow-wrap: anywhere; }
+.highlight-qa { margin-top: 12px; padding: 8px 10px; background: #f4f7f9; border-radius: 5px; font-size: .82rem; font-style: italic; font-weight: 500; color: #506674; }
+.programme-note { color: var(--muted); font-size: .82rem; font-style: italic; line-height: 1.65; margin: 16px 2px 24px; }
+footer { text-align: center; color: var(--muted); background: white; border-top: 1px solid var(--line); margin-top: 32px; padding: 24px 20px; font-size: .83rem; line-height: 1.8; }
+footer strong { color: #365367; font-weight: 650; }
+.mobile-agenda { display: none; }
+.mobile-venues { color: var(--muted); font-size: .79rem; line-height: 1.55; margin: 0 0 14px; }
+@media (max-width: 800px) {
+  header { padding: 26px 16px 22px; }
+  header h1 { font-size: 1.65rem; }
+  .conference-date { font-size: .91rem; }
+  .venue { font-size: .77rem; }
+  nav { padding: 10px; }
+  nav button { flex: 1; max-width: 170px; }
+  .day { margin: 20px auto; padding: 0 14px; }
+  .day h2 { font-size: 1.07rem; margin-bottom: 10px; }
+  body.js-ready .table-wrap { display: none; }
+  body.js-ready .mobile-agenda { display: block; }
+  .mobile-card { background: #fff; border: 1px solid var(--line); border-radius: 9px; margin-bottom: 12px; overflow: hidden; box-shadow: 0 2px 6px rgba(12,48,69,.04); }
+  .mobile-time { background: #eaf1f5; color: var(--navy); font-size: .83rem; font-weight: 650; padding: 9px 14px; font-variant-numeric: tabular-nums; }
+  .mobile-event { padding: 13px 10px; font-size: .9rem; }
+  .mobile-parallel { padding: 16px; }
+  .mobile-parallel + .mobile-parallel { border-top: 2px solid var(--line); }
+  .mobile-location { color: #5a7486; text-transform: uppercase; font-size: .73rem; font-weight: 700; letter-spacing: .09em; margin-bottom: 7px; }
+  .session h3 { font-size: 1rem; }
+  .session .convener { margin: 11px 0 14px; }
+  .talk { font-size: .88rem; }
+  footer { margin-top: 20px; padding: 20px 16px; font-size: .79rem; }
 }
 @media print {
-  nav, .mobile-agenda {
-    display: none !important;
-  }
-  .day, .day:not(.active) {
-    display: block;
-    max-width: none;
-    page-break-after: always;
-  }
-  table.schedule {
-    min-width: 0;
-    font-size: 8pt;
-  }
-  table.schedule th, table.schedule td {
-    padding: 4px;
-  }
-  .table-wrap {
-    overflow: visible;
-  }
+  body { background: #fff; }
+  nav, .mobile-agenda { display: none !important; }
+  .day, .day:not(.active) { display: block; max-width: none; margin: 12px 0; padding: 0; }
+  #day2 { break-before: page; }
+  body.js-ready .table-wrap { display: block !important; overflow: visible; box-shadow: none; }
+  table.schedule { min-width: 0; font-size: 8pt; }
+  .schedule th, .schedule td, .schedule td.session { padding: 5px; }
+  .session h3 { font-size: 10pt; }
+  .session .convener { padding: 4px 6px; margin: 5px 0; }
+  .talk { padding: 3px 0; }
+  .talk strong.speaker-name { font-size: 8pt; }
+  * { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
 }
-  </style>
+</style>
 </head>
 <body>
-  <header>
-    <h1>ASE/EOS Conference Program<br>January 6-7, 2027</h1>
-    <p class="venue">Nanyang Executive Centre (NEC) | 60 Nanyang View, Singapore 639673</p>
-  </header>
-
-  <nav aria-label="Select conference day">
-    <button class="tab active" onclick="showDay('day1', this)" aria-selected="true">Day 1</button>
-    <button class="tab" onclick="showDay('day2', this)" aria-selected="false">Day 2</button>
-  </nav>
-
-  <main>
-    <!-- DAY 1 -->
-    <section id="day1" class="day active">
-      <h2>Day 1 · Wednesday, 6 January 2027</h2>
-      <div class="mobile-agenda" aria-label="Mobile programme"></div>
-      <div class="table-wrap">
-        <table class="schedule">
-          <colgroup>
-            <col style="width:13%">
-            <col style="width:26%">
-            <col style="width:15%">
-            <col style="width:15%">
-            <col style="width:31%">
-          </colgroup>
-          <tr class="table-head">
-            <th>Time</th>
-            <th>Auditorium<br><small>MC: Yiwen Zhang</small></th>
-            <th colspan="2">Dr Stephen Riady Awardees<br>Poster Showcase</th>
-            <th>Cypress Hall 1<br><small>MC: TBD</small></th>
-          </tr>
-          <tr class="plenary-row">
-            <td class="time">9:00 - 9:20</td>
-            <td colspan="4" class="event highlight-break"><strong>Registration + Welcome Coffee</strong></td>
-          </tr>
-          <tr class="plenary-row">
-            <td class="time">9:20 – 9:30</td>
-            <td colspan="4" class="event highlight-intro"><strong>Welcome + Introduction</strong></td>
-          </tr>
-          <tr class="plenary-row">
-            <td class="time">9:30 - 9:40</td>
-            <td colspan="4" class="event highlight-keynote"><strong>Opening Remarks</strong><span class="event-detail">Prof. Emma Hill</span></td>
-          </tr>
-          <tr class="plenary-row">
-            <td class="time">9:40 - 9:50</td>
-            <td colspan="4" class="event highlight-intro"><strong>Day 1 Overview</strong><span class="event-detail">Conference Organising Committee</span></td>
-          </tr>
-          <tr class="plenary-row">
-            <td class="time">9:50 – 10:10</td>
-            <td colspan="4" class="event highlight-intro"><strong>Update on CTP</strong><span class="event-detail">Prof. Adam Switzer</span></td>
-          </tr>
-          <tr class="plenary-row">
-            <td class="time">10:10 – 10:30</td>
-            <td colspan="4" class="event highlight-intro"><strong>Update on InVEST</strong><span class="event-detail">Dr. Rishav Mallick</span></td>
-          </tr>
-          <tr class="plenary-row">
-            <td class="time">10:30 - 11:10</td>
-            <td colspan="4" class="event highlight-keynote"><strong>Keynote</strong><span class="event-detail">Prof. Emma Hill</span></td>
-          </tr>
-          <tr class="plenary-row">
-            <td class="time">11:10 – 11:40</td>
-            <td colspan="4" class="event highlight-panel"><strong>Flash Talk Challenge</strong><span class="event-detail">&quot;90 seconds to make your research make sense to everyone”</span></td>
-          </tr>
-          <tr class="plenary-row">
-            <td class="time">11:40 - 12:50</td>
-            <td colspan="4" class="event highlight-break"><strong>Lunch Break</strong></td>
-          </tr>
-
-          <!-- SESSION 1 -->
-          <tr class="parallel-row">
-            <td class="time">12:50 – 13:50*</td>
-            <td class="session" colspan="2">
-              <h3>Session 1A: Geodynamics, Seismology &amp; Natural Hazards (I)</h3>
-              <div class="convener">Convener TBC</div>
-              <div class="talk"><strong class="speaker-name">Rishav Mallick</strong><div class="talk-title">TBD</div></div>
-              <div class="talk"><strong class="speaker-name">Shaira Lee</strong><div class="talk-title">TBD</div></div>
-              <div class="talk"><strong class="speaker-name">Lyu Mingzhe</strong><div class="talk-title">Strong plate interface geometry contrast bounded the near-repeating Kamchatka megathrust earthquakes</div></div>
-              <div class="talk"><strong class="speaker-name">Sharadha Sathiakumar</strong><div class="talk-title">TBD</div></div>
-              <div class="talk"><strong class="speaker-name">Christina W.</strong><div class="talk-title">Standardised Volcano-Seismic Data Analysis: Building Comparable Metrics Across Volcanoes</div></div>
-              <div class="highlight-qa">15 minutes panel Q&amp;A</div>
-            </td>
-            <td class="session" colspan="2">
-              <h3>Session 1B: Coastal &amp; Marine Environments (I)</h3>
-              <div class="convener">Convener TBC</div>
-              <div class="talk"><strong class="speaker-name">Jia Jie Ong</strong><div class="talk-title">Post-bleaching structural and community changes on coral reefs</div></div>
-              <div class="talk"><strong class="speaker-name">Erandani Lakshnai Widana Arachchige</strong><div class="talk-title">TBD : Cyclones</div></div>
-              <div class="talk"><strong class="speaker-name">Jeslyn Poo</strong><div class="talk-title">Microbial oceanography of the high seas</div></div>
-              <div class="talk"><strong class="speaker-name">Leoh Khai Ken</strong><div class="talk-title">TBD : Singapore 125,000 years ago</div></div>
-              <div class="talk"><strong class="speaker-name">Yuting Yan</strong><div class="talk-title">TBD : Forams in Singapore</div></div>
-              <div class="highlight-qa">15 minutes panel Q&amp;A</div>
-            </td>
-          </tr>
-
-          <!-- SESSION 2 -->
-          <tr class="parallel-row">
-            <td class="time">14:00 – 15:00*</td>
-            <td class="session" colspan="2">
-              <h3>Session 2A: Biodiversity, Ecosystems &amp; Forest Ecology (I)</h3>
-              <div class="convener">Convener TBC</div>
-              <div class="talk"><strong class="speaker-name">Weng Ngai Lam</strong><div class="talk-title">TBD: Dead leaves as nature based solutions in tropical cities</div></div>
-              <div class="talk"><strong class="speaker-name">Clement Ng</strong><div class="talk-title">TBD: Vegetation and species fitness</div></div>
-              <div class="talk"><strong class="speaker-name">Aorui Liu</strong><div class="talk-title">TBD Pollinators on Rooftops</div></div>
-              <div class="talk"><strong class="speaker-name">Guobing Zeng</strong><div class="talk-title">Seeing Through the Canopy from Space: Canopy Height and Forest Biomass with Hongtu-1 and BIOMASS Radar Tomography</div></div>
-              <div class="talk"><strong class="speaker-name">Xu Tianyang</strong><div class="talk-title">TBD</div></div>
-              <div class="highlight-qa">15 minutes panel Q&amp;A</div>
-            </td>
-            <td class="session" colspan="2">
-              <h3>Session 2B: Geodynamics, Seismology &amp; Natural Hazards (II)</h3>
-              <div class="convener">Convener TBC</div>
-              <div class="talk"><strong class="speaker-name">Amin Naeini</strong><div class="talk-title">Earthquake Rupture Characterization From Submarine Telecommunications Cables for Regional Tsunami Early Warning</div></div>
-              <div class="talk"><strong class="speaker-name">Adrien Mourey</strong><div class="talk-title">TBD</div></div>
-              <div class="talk"><strong class="speaker-name">Wang Dehua</strong><div class="talk-title">TBD</div></div>
-              <div class="talk"><strong class="speaker-name">Mason Perry</strong><div class="talk-title">TBD</div></div>
-              <div class="talk"><strong class="speaker-name">Wei Yixin</strong><div class="talk-title">TBD</div></div>
-              <div class="highlight-qa">15 minutes panel Q&amp;A</div>
-            </td>
-          </tr>
-
-          <tr class="plenary-row">
-            <td class="time">15:00 - 15:30</td>
-            <td colspan="4" class="event highlight-break"><strong>Coffee Break</strong></td>
-          </tr>
-
-          <!-- SESSION 3 -->
-          <tr class="parallel-row">
-            <td class="time">15:30 – 17:00*</td>
-            <td class="session" colspan="2">
-              <h3>Session 3A: Human-Environment Interactions &amp; Sustainability (I)</h3>
-              <div class="convener">Convener TBC</div>
-              <div class="talk"><strong class="speaker-name">Tan Zu Dienle</strong><div class="talk-title">TBD: Fire regimes</div></div>
-              <div class="talk"><strong class="speaker-name">Joelle Chan</strong><div class="talk-title">TBD: Gleaning</div></div>
-              <div class="talk"><strong class="speaker-name">Shen Yichen</strong><div class="talk-title">Tracing embodied deforestation in global supply chains</div></div>
-              <div class="talk"><strong class="speaker-name">Emma Chao &amp; Desmond Chua</strong><div class="talk-title">Bats on Campus, Ecology and their Viromes</div></div>
-              <div class="talk"><strong class="speaker-name">Nilofer Mohamed</strong><div class="talk-title">TBD</div></div>
-              <div class="talk"><strong class="speaker-name">Ruonan Li</strong><div class="talk-title">TBD</div></div>
-              <!-- <div class="talk"><strong class="speaker-name">Yiwen Zeng?</strong></div> -->
-              <div class="highlight-qa">15 minutes panel Q&amp;A</div>
-            </td>
-            <td class="session" colspan="2">
-              <h3>Session 3B: Earth Systems &amp; Climate Science</h3>
-              <div class="convener">Convener TBC</div>
-              <div class="talk"><strong class="speaker-name">Chen Jie</strong><div class="talk-title">TBD: Climate Impact of Agricultural Dust through Aerosol–Cloud Interactions</div></div>
-              <div class="talk"><strong class="speaker-name">Grace Ng</strong><div class="talk-title">TBD</div></div>
-              <div class="talk"><strong class="speaker-name">Zhaofeng Ouyang</strong><div class="talk-title">TBD</div></div>
-              <div class="talk"><strong class="speaker-name">Ankit Jaiswal</strong><div class="talk-title">TBD</div></div>
-              <div class="talk"><strong class="speaker-name">Walworth Nathan Gerard</strong><div class="talk-title">TBD: hybrid academic/industry talk on carbon capture &amp; storage using seawater and minerals</div></div>
-              <div class="talk"><strong class="speaker-name">Anulekha Prasad</strong><div class="talk-title">TBD</div></div>
-              <!-- <div class="talk"><strong class="speaker-name">Yanyan?</strong></div> -->
-              <div class="highlight-qa">15 minutes panel Q&amp;A</div>
-            </td>
-          </tr>
-          <tr class="plenary-row">
-            <td class="time">17:00</td>
-            <td colspan="4" class="event highlight-break"><strong>End of Day 1</strong></td>
-          </tr>
-        </table>
-      </div>
-      <p class="programme-note">*Afternoon parallel sessions are provisional and may be adjusted depending on presentation sign-up numbers. Final session allocations and timings will be confirmed once registrations close.</p>
-    </section>
-
-    <!-- DAY 2 -->
-    <section id="day2" class="day">
-      <h2>Day 2 · Thursday, 7 January 2027</h2>
-      <div class="mobile-agenda" aria-label="Mobile programme"></div>
-      <div class="table-wrap">
-        <table class="schedule">
-          <colgroup>
-            <col style="width:13%">
-            <col style="width:26%">
-            <col style="width:15%">
-            <col style="width:15%">
-            <col style="width:31%">
-          </colgroup>
-          <tr class="table-head">
-            <th>Time</th>
-            <th>Auditorium<br><small>MC: Yiwen Zhang</small></th>
-            <th colspan="2">Dr Stephen Riady Awardees<br>Poster Showcase</th>
-            <th>Cypress Hall 1<br><small>MC: Aaron</small></th>
-          </tr>
-          <tr class="plenary-row">
-            <td class="time">9:00 - 9:30</td>
-            <td colspan="4" class="event highlight-break"><strong>Welcome Coffee</strong></td>
-          </tr>
-          <tr class="plenary-row">
-            <td class="time">9:30 - 9:35</td>
-            <td colspan="4" class="event highlight-intro"><strong>Day 2 Overview</strong></td>
-          </tr>
-          <tr class="plenary-row">
-            <td class="time">9:35 - 9:45</td>
-            <td colspan="4" class="event highlight-intro"><strong>GSC Updates</strong></td>
-          </tr>
-          <tr class="plenary-row">
-            <td class="time">9:45 – 9:55</td>
-            <td colspan="4" class="event highlight-intro"><strong>RF Updates</strong><span class="event-detail">Dr Thorsten Markmann &amp; Dr Marine Gelin</span></td>
-          </tr>
-          <tr class="plenary-row">
-            <td class="time">9:55 - 10:05</td>
-            <td colspan="4" class="event highlight-intro"><strong>Community Engagement Sharing</strong><span class="event-detail">Mr David Austin</span></td>
-          </tr>
-          <tr class="plenary-row">
-            <td class="time">10:05 – 10:15</td>
-            <td colspan="4" class="event highlight-intro"><strong>CGO Sharing</strong><span class="event-detail">Assoc Prof Benoit Taisne</span></td>
-          </tr>
-          <tr class="plenary-row">
-            <td class="time">10:15 – 10:25</td>
-            <td colspan="4" class="event highlight-intro"><strong>EOS-RS Sharing</strong><span class="event-detail">Assoc Prof Sang-Ho Yun</span></td>
-          </tr>
-          <tr class="plenary-row">
-            <td class="time">10:25 - 11.30</td>
-            <td colspan="4" class="event highlight-panel"><strong>Panel Discussion</strong><span class="event-detail">led by Asst Prof Lam Weng Ngai</span></td>
-          </tr>
-          <tr class="plenary-row">
-            <td class="time">11:30 - 13.00</td>
-            <td colspan="4" class="event highlight-break"><strong>Lunch Break</strong></td>
-          </tr>
-
-          <!-- SESSION 4 -->
-          <tr class="parallel-row">
-            <td class="time">13:00 – 14:30*</td>
-            <td class="session" colspan="2">
-              <h3>Session 4A: Data Science in Environmental &amp; Earth Sciences (I)</h3>
-              <div class="convener">Convener TBC</div>
-              <div class="talk"><strong class="speaker-name">Tao Feng</strong><div class="talk-title">TBD</div></div>
-              <div class="talk"><strong class="speaker-name">Yiwen Zhang</strong><div class="talk-title">TBD</div></div>
-              <div class="talk"><strong class="speaker-name">Ricky Winarko</strong><div class="talk-title">TBD: SARImpact: Developing an Intuitive Interface for On-Demand Disaster Mapping</div></div>
-              <div class="talk"><strong class="speaker-name">Denny</strong><div class="talk-title">Physics-Informed Machine Learning of Interferometric Synthetic Aperture Radar Observations at Volcanoes</div></div>
-              <div class="talk"><strong class="speaker-name">Shi Tong Chin</strong><div class="talk-title">TBD: From Overpass to Damage Map: Scaling EOS Rapid Disaster Response for Next-Generation SAR Missions</div></div>
-              <div class="talk"><strong class="speaker-name">Shichuan Sun</strong><div class="talk-title">TBD (might be AI related earth core research)</div></div>
-              <div class="highlight-qa">15 minutes panel Q&amp;A</div>
-            </td>
-            <td class="session" colspan="2">
-              <h3>Session 4B: Geodynamics, Seismology &amp; Natural Hazards (III)</h3>
-              <div class="convener">Convener TBC</div>
-              <div class="talk"><strong class="speaker-name">Voon Hui</strong><div class="talk-title">fibre-optic seismology</div></div>
-              <div class="talk"><strong class="speaker-name">Zhangfeng Ma</strong><div class="talk-title">A Barrier, but Also a Gateway: The Dual Role of Fault Geometric Complexity in Earthquake Rupture</div></div>
-              <div class="talk"><strong class="speaker-name">SIM Yu Yang</strong><div class="talk-title">TBD</div></div>
-              <div class="talk"><strong class="speaker-name">Sandy Tri Gustono</strong><div class="talk-title">TBD</div></div>
-              <div class="talk"><strong class="speaker-name">Thorsten Markmann</strong><div class="talk-title">TBD</div></div>
-              <div class="talk"><strong class="speaker-name">Christian CJ</strong><div class="talk-title">TBD</div></div>
-              <div class="highlight-qa">15 minutes panel Q&amp;A</div>
-            </td>
-          </tr>
-
-          <tr class="plenary-row">
-            <td class="time">14:30 - 15:00</td>
-            <td colspan="4" class="event highlight-break"><strong>Coffee Break</strong></td>
-          </tr>
-
-          <!-- SESSION 5 -->
-          <tr class="parallel-row">
-            <td class="time">15:00 – 16:30*</td>
-            <td class="session" colspan="2">
-              <h3>Session 5A: Biodiversity, Ecosystems &amp; Forest Ecology (II)</h3>
-              <div class="convener">Convener TBC</div>
-              <div class="talk"><strong class="speaker-name">Ying Chi (Ginny) Chan</strong><div class="talk-title">TBD</div></div>
-              <div class="talk"><strong class="speaker-name">Zhentao Liu</strong><div class="talk-title">Carbon exchange in a pristine peat swamp forest</div></div>
-              <div class="talk"><strong class="speaker-name">Chiew Li Yuen</strong><div class="talk-title">TBD Oil palm</div></div>
-              <div class="talk"><strong class="speaker-name">Poorvi Ashok</strong><div class="talk-title">TBD</div></div>
-              <div class="talk"><strong class="speaker-name">Lijing Jiao</strong><div class="talk-title">The hidden ecological networks of microbial thermophiles</div></div>
-              <div class="talk"><strong class="speaker-name">Aparna Haridas</strong><div class="talk-title">Molecular Characterization of Dissolved Organic Matter in Brunei Peatlands</div></div>
-              <div class="talk"><strong class="speaker-name">Misato Ogasahara</strong><div class="talk-title">TBD</div></div>
-              <!-- <div class="talk"><strong class="speaker-name">?Yim Wen Han Marx</strong><div class="talk-title">?TBD</div></div> -->
-              <div class="highlight-qa">15 minutes panel Q&amp;A</div>
-            </td>
-            <td class="session" colspan="2">
-              <h3>Session 5B: Coastal &amp; Marine Environments (II)</h3>
-              <div class="convener">Convener TBC</div>
-              <div class="talk"><strong class="speaker-name">Lucas Koh</strong><div class="talk-title">Quantifying optical drivers of light limitation on coral reefs in Southeast Asia</div></div>
-              <div class="talk"><strong class="speaker-name">Nisha</strong><div class="talk-title">Long-Term Environmental Influences on Mangrove Soil Carbon Stocks: Insights from Palaeoecology and Geochemistry</div></div>
-              <div class="talk"><strong class="speaker-name">Darryl Valino</strong><div class="talk-title">Estimating 3D coral morphological traits from traditional 2D imagery</div></div>
-              <div class="talk"><strong class="speaker-name">Kristy Chang</strong><div class="talk-title">Heterotrophic fixation of CO2, a new pathway for valorization?</div></div>
-              <div class="talk"><strong class="speaker-name">Regine Tiong</strong><div class="talk-title">Impact of environmental change on Marine turtle populations</div></div>
-              <div class="talk"><strong class="speaker-name">Adam Rexroade</strong><div class="talk-title">Seasonal wetting and drying dynamics drive greenhouse gas emissions across Australia’s river network</div></div>
-              <div class="talk"><strong class="speaker-name">Rahul Kumar</strong><div class="talk-title">TBD : Beach ridges, sea level and cyclones</div></div>
-              <div class="highlight-qa">15 minutes panel Q&amp;A</div>
-            </td>
-          </tr>
-          <tr class="plenary-row">
-            <td class="time">16:30 – 16:45</td>
-            <td colspan="4" class="event highlight-panel"><strong>Awards Presentation</strong><span class="event-detail">Flash Talk Challenge</span><span class="event-detail">Best Presentation</span></td>
-          </tr>
-          <tr class="plenary-row">
-            <td class="time">16:45 - 17:00</td>
-            <td colspan="4" class="event highlight-keynote"><strong>Closing Remarks</strong><span class="event-detail">Prof. Steve Yim</span></td>
-          </tr>
-        </table>
-      </div>
-      <p class="programme-note">*Afternoon parallel sessions are provisional and may be adjusted depending on presentation sign-up numbers. Final session allocations and timings will be confirmed once registrations close.</p>
-    </section>
-  </main>
-
-  <!-- Original footer: unchanged -->
-  <footer>
-    <strong>Conference organising committee:</strong> Steve Yim, Jhoanna Jovero, Yasmin Basir, Yiwen Zhang, Aaron Espinosa<br>
-     <strong>Supported by:</strong> EOS Advancement Office, ASE Administration Team, ASE GSC, Research Fellow representatives
+<header>
+<h1>ASE/EOS Conference Program<br/><span class="conference-date">January 6-7, 2027</span></h1>
+<p class="venue">Nanyang Executive Centre (NEC) | 60 Nanyang View, Singapore 639673</p>
+</header>
+<nav aria-label="Select conference day">
+<button aria-selected="true" class="tab active" onclick="showDay('day1', this)">Day 1</button>
+<button aria-selected="false" class="tab" onclick="showDay('day2', this)">Day 2</button>
+</nav>
+<main>
+<!-- Day 1 -->
+<section class="day active" id="day1">
+<h2>Day 1 · Wednesday, 6 January 2027</h2>
+<div aria-label="Mobile programme" class="mobile-agenda"></div>
+<div class="table-wrap">
+<table class="schedule">
+<colgroup><col style="width:13%"/><col style="width:28%"/><col style="width:15.5%"/><col style="width:15.5%"/><col style="width:28%"/></colgroup>
+<tr class="table-head">
+<th>Time</th>
+<th>Auditorium<br/><small>MC: Yiwen Zhang</small></th>
+<th colspan="2">Dr Stephen Riady Geoscience Scholar Awardees<br/>Poster Showcase</th>
+<th>Cypress Hall 1<br/><small>MC: Iuna</small></th>
+</tr>
+<tr class="plenary-row"><td class="time">9:00 - 9:20</td><td class="event highlight-break" colspan="4"><strong>Registration + Welcome Coffee</strong></td></tr>
+<tr class="plenary-row"><td class="time">9:20 – 9:30</td><td class="event highlight-intro" colspan="4"><strong>Welcome + Introduction</strong></td></tr>
+<tr class="plenary-row"><td class="time">9:30 - 9:40</td><td class="event highlight-keynote" colspan="4"><strong>Opening Remarks</strong><span class="event-detail">Prof. Emma Hill</span></td></tr>
+<tr class="plenary-row"><td class="time">9:40 - 9:50</td><td class="event highlight-intro" colspan="4"><strong>Day 1 Overview</strong><span class="event-detail">Conference Organising Committee</span></td></tr>
+<tr class="plenary-row"><td class="time">9:50 – 10:10</td><td class="event highlight-intro" colspan="4"><strong>Update on CTP</strong><span class="event-detail">Prof. Adam Switzer</span></td></tr>
+<tr class="plenary-row"><td class="time">10:10 – 10:30</td><td class="event highlight-intro" colspan="4"><strong>Update on InVEST</strong><span class="event-detail">Dr. Rishav Mallick</span></td></tr>
+<tr class="plenary-row"><td class="time">10:30 - 11:10</td><td class="event highlight-keynote" colspan="4"><strong>Keynote</strong><span class="event-detail">Prof. Emma Hill</span></td></tr>
+<tr class="plenary-row"><td class="time">11:10 – 11:40</td><td class="event highlight-panel" colspan="4"><strong>Flash Talk Challenge</strong><span class="event-detail">"90 seconds to make your research make sense to everyone”</span></td></tr>
+<tr class="plenary-row"><td class="time">11:40 - 12:50</td><td class="event highlight-break" colspan="4"><strong>Lunch Break</strong></td></tr>
+<tr class="parallel-row"><td class="time">12:50 – 13:50*</td>
+<td class="session" colspan="2"><h3>Session 1A: Geodynamics, Seismology &amp; Natural Hazards (I)</h3>
+<div class="convener"><span class="convener-label">Convener:</span> <span class="convener-name">Benoit Taisne</span></div>
+<div class="talk"><strong class="speaker-name">Rishav Mallick</strong> <div class="talk-title">TBD</div></div>
+<div class="talk"><strong class="speaker-name">Shaira Lee</strong> <div class="talk-title">TBD</div></div>
+<div class="talk"><strong class="speaker-name">Lyu Mingzhe</strong> <div class="talk-title">Strong plate interface geometry contrast bounded the near-repeating Kamchatka megathrust earthquakes</div></div>
+<div class="talk"><strong class="speaker-name">Sharadha Sathiakumar</strong> <div class="talk-title">TBD</div></div>
+<div class="talk"><strong class="speaker-name">Christina W.</strong> <div class="talk-title">Standardised Volcano-Seismic Data Analysis: Building Comparable Metrics Across Volcanoes</div></div>
+<div class="highlight-qa">15 minutes panel Q&amp;A</div></td>
+<td class="session" colspan="2"><h3>Session 1B: Coastal &amp; Marine Environments (I)</h3>
+<div class="convener"><span class="convener-label">Convener:</span> <span class="convener-name">TBC</span></div>
+<div class="talk"><strong class="speaker-name">Jia Jie Ong</strong> <div class="talk-title">Post-bleaching structural and community changes on coral reefs</div></div>
+<div class="talk"><strong class="speaker-name">Erandani Lakshnai Widana Arachchige</strong> <div class="talk-title">TBD : Cyclones</div></div>
+<div class="talk"><strong class="speaker-name">Jeslyn Poo</strong> <div class="talk-title">Microbial oceanography of the high seas</div></div>
+<div class="talk"><strong class="speaker-name">Leoh Khai Ken</strong> <div class="talk-title">TBD : Singapore 125,000 years ago</div></div>
+<div class="talk"><strong class="speaker-name">Yuting Yan</strong> <div class="talk-title">TBD : Forams in Singapore</div></div>
+<div class="highlight-qa">15 minutes panel Q&amp;A</div></td>
+</tr>
+<tr class="parallel-row"><td class="time">14:00 – 15:00*</td>
+<td class="session" colspan="2"><h3>Session 2A: Biodiversity, Ecosystems &amp; Forest Ecology (I)</h3>
+<div class="convener"><span class="convener-label">Convener:</span> <span class="convener-name">Alexander Cobb</span></div>
+<div class="talk"><strong class="speaker-name">Weng Ngai Lam</strong> <div class="talk-title">TBD: Dead leaves as nature based solutions in tropical cities</div></div>
+<div class="talk"><strong class="speaker-name">Clement Ng</strong> <div class="talk-title">TBD: Vegetation and species fitness</div></div>
+<div class="talk"><strong class="speaker-name">Aorui Liu</strong> <div class="talk-title">TBD Pollinators on Rooftops</div></div>
+<div class="talk"><strong class="speaker-name">Guobing Zeng</strong> <div class="talk-title">Seeing Through the Canopy from Space: Canopy Height and Forest Biomass with Hongtu-1 and BIOMASS Radar Tomography</div></div>
+<div class="talk"><strong class="speaker-name">Xu Tianyang</strong> <div class="talk-title">TBD</div></div>
+<div class="highlight-qa">15 minutes panel Q&amp;A</div></td>
+<td class="session" colspan="2"><h3>Session 2B: Geodynamics, Seismology &amp; Natural Hazards (II)</h3>
+<div class="convener"><span class="convener-label">Convener:</span> <span class="convener-name">Lujia Feng</span></div>
+<div class="talk"><strong class="speaker-name">Amin Naeini</strong> <div class="talk-title">Earthquake Rupture Characterization From Submarine Telecommunications Cables for Regional Tsunami Early Warning</div></div>
+<div class="talk"><strong class="speaker-name">Adrien Mourey</strong> <div class="talk-title">TBD</div></div>
+<div class="talk"><strong class="speaker-name">Wang Dehua</strong> <div class="talk-title">TBD</div></div>
+<div class="talk"><strong class="speaker-name">Mason Perry</strong> <div class="talk-title">TBD</div></div>
+<div class="talk"><strong class="speaker-name">Wei Yixin</strong> <div class="talk-title">TBD</div></div>
+<div class="highlight-qa">15 minutes panel Q&amp;A</div></td>
+</tr>
+<tr class="plenary-row"><td class="time">15:00 - 15:30</td><td class="event highlight-break" colspan="4"><strong>Coffee Break</strong></td></tr>
+<tr class="parallel-row"><td class="time">15:30 – 17:00*</td>
+<td class="session" colspan="2"><h3>Session 3A: Human-Environment Interactions &amp; Sustainability (I)</h3>
+<div class="convener"><span class="convener-label">Convener:</span> <span class="convener-name">TBC</span></div>
+<div class="talk"><strong class="speaker-name">Tan Zu Dienle</strong> <div class="talk-title">TBD: Fire regimes</div></div>
+<div class="talk"><strong class="speaker-name">Joelle Chan</strong> <div class="talk-title">TBD: Gleaning</div></div>
+<div class="talk"><strong class="speaker-name">Shen Yichen</strong> <div class="talk-title">Tracing embodied deforestation in global supply chains</div></div>
+<div class="talk"><strong class="speaker-name">Emma Chao &amp; Desmond Chua</strong> <div class="talk-title">Bats on Campus, Ecology and their Viromes</div></div>
+<div class="talk"><strong class="speaker-name">Nilofer Mohamed</strong> <div class="talk-title">TBD</div></div>
+<div class="talk"><strong class="speaker-name">Ruonan Li</strong> <div class="talk-title">TBD</div></div>
+<!-- <div class="talk"><strong class="speaker-name">Yiwen Zeng?</strong></div> -->
+<div class="highlight-qa">15 minutes panel Q&amp;A</div></td>
+<td class="session" colspan="2"><h3>Session 3B: Earth Systems &amp; Climate Science</h3>
+<div class="convener"><span class="convener-label">Convener:</span> <span class="convener-name">TBC</span></div>
+<div class="talk"><strong class="speaker-name">Chen Jie</strong> <div class="talk-title">TBD: Climate Impact of Agricultural Dust through Aerosol–Cloud Interactions</div></div>
+<div class="talk"><strong class="speaker-name">Grace Ng</strong> <div class="talk-title">TBD</div></div>
+<div class="talk"><strong class="speaker-name">Zhaofeng Ouyang</strong> <div class="talk-title">TBD</div></div>
+<div class="talk"><strong class="speaker-name">Ankit Jaiswal</strong> <div class="talk-title">TBD</div></div>
+<div class="talk"><strong class="speaker-name">Walworth Nathan Gerard</strong> <div class="talk-title">TBD: hybrid academic/industry talk on carbon capture &amp; storage using seawater and minerals</div></div>
+<div class="talk"><strong class="speaker-name">Anulekha Prasad</strong> <div class="talk-title">TBD</div></div>
+<!-- <div class="talk"><strong class="speaker-name">Yanyan?</strong></div> -->
+<div class="highlight-qa">15 minutes panel Q&amp;A</div></td>
+</tr>
+<tr class="plenary-row"><td class="time">17:00</td><td class="event highlight-break" colspan="4"><strong>End of Day 1</strong></td></tr>
+</table>
+</div>
+<p class="programme-note">*Afternoon parallel sessions are provisional and may be adjusted depending on presentation sign-up numbers. Final session allocations and timings will be confirmed once registrations close.</p>
+</section>
+<!-- Day 2 -->
+<section class="day" id="day2">
+<h2>Day 2 · Thursday, 7 January 2027</h2>
+<div aria-label="Mobile programme" class="mobile-agenda"></div>
+<div class="table-wrap">
+<table class="schedule">
+<colgroup><col style="width:13%"/><col style="width:28%"/><col style="width:15.5%"/><col style="width:15.5%"/><col style="width:28%"/></colgroup>
+<tr class="table-head">
+<th>Time</th>
+<th>Auditorium<br/><small>MC: Yiwen Zhang</small></th>
+<th colspan="2">Dr Stephen Riady Geoscience Scholar Awardees<br/>Poster Showcase</th>
+<th>Cypress Hall 1<br/><small>MC: Aaron</small></th>
+</tr>
+<tr class="plenary-row"><td class="time">9:00 - 9:30</td><td class="event highlight-break" colspan="4"><strong>Welcome Coffee</strong></td></tr>
+<tr class="plenary-row"><td class="time">9:30 - 9:35</td><td class="event highlight-intro" colspan="4"><strong>Day 2 Overview</strong><span class="event-detail">Conference Organising Committee</span></td></tr>
+<tr class="plenary-row"><td class="time">9:35 - 9:45</td><td class="event highlight-intro" colspan="4"><strong>GSC Updates</strong></td></tr>
+<tr class="plenary-row"><td class="time">9:45 – 9:55</td><td class="event highlight-intro" colspan="4"><strong>RF Updates</strong><span class="event-detail">Dr Thorsten Markmann &amp; Dr Marine Gelin</span></td></tr>
+<tr class="plenary-row"><td class="time">9:55 - 10:05</td><td class="event highlight-intro" colspan="4"><strong>Community Engagement Sharing</strong><span class="event-detail">Mr David Austin</span></td></tr>
+<tr class="plenary-row"><td class="time">10:05 – 10:15</td><td class="event highlight-intro" colspan="4"><strong>CGO Sharing</strong><span class="event-detail">Assoc Prof Benoit Taisne</span></td></tr>
+<tr class="plenary-row"><td class="time">10:15 – 10:25</td><td class="event highlight-intro" colspan="4"><strong>EOS-RS Sharing</strong><span class="event-detail">Assoc Prof Sang-Ho Yun</span></td></tr>
+<tr class="plenary-row"><td class="time">10:25 - 11.30</td><td class="event highlight-panel" colspan="4"><strong>Panel Discussion</strong><span class="event-detail">led by Asst Prof Lam Weng Ngai</span></td></tr>
+<tr class="plenary-row"><td class="time">11:30 - 13.00</td><td class="event highlight-break" colspan="4"><strong>Lunch Break</strong></td></tr>
+<tr class="parallel-row"><td class="time">13:00 – 14:30*</td>
+<td class="session" colspan="2"><h3>Session 4A: Biodiversity, Ecosystems &amp; Forest Ecology (II)</h3>
+<div class="convener"><span class="convener-label">Convener:</span> <span class="convener-name">Pierre Taillardat</span></div>
+<div class="talk"><strong class="speaker-name">Ying Chi (Ginny) Chan</strong> <div class="talk-title">TBD</div></div>
+<div class="talk"><strong class="speaker-name">Zhentao Liu</strong> <div class="talk-title">Carbon exchange in a pristine peat swamp forest</div></div>
+<div class="talk"><strong class="speaker-name">Chiew Li Yuen</strong> <div class="talk-title">TBD Oil palm</div></div>
+<div class="talk"><strong class="speaker-name">Poorvi Ashok</strong> <div class="talk-title">TBD</div></div>
+<div class="talk"><strong class="speaker-name">Lijing Jiao</strong> <div class="talk-title">The hidden ecological networks of microbial thermophiles</div></div>
+<div class="talk"><strong class="speaker-name">Aparna Haridas</strong> <div class="talk-title">Molecular Characterization of Dissolved Organic Matter in Brunei Peatlands</div></div>
+<div class="talk"><strong class="speaker-name">Misato Ogasahara</strong> <div class="talk-title">TBD</div></div>
+<!-- <div class="talk"><strong class="speaker-name">?Yim Wen Han Marx</strong> <div class="talk-title">?TBD</div></div> -->
+<div class="highlight-qa">15 minutes panel Q&amp;A</div></td>
+<td class="session" colspan="2"><h3>Session 4B: Geodynamics, Seismology &amp; Natural Hazards (III)</h3>
+<div class="convener"><span class="convener-label">Convener:</span> <span class="convener-name">TBC</span></div>
+<div class="talk"><strong class="speaker-name">Voon Hui</strong> <div class="talk-title">fibre-optic seismology</div></div>
+<div class="talk"><strong class="speaker-name">Zhangfeng Ma</strong> <div class="talk-title">A Barrier, but Also a Gateway: The Dual Role of Fault Geometric Complexity in Earthquake Rupture</div></div>
+<div class="talk"><strong class="speaker-name">SIM Yu Yang</strong> <div class="talk-title">TBD</div></div>
+<div class="talk"><strong class="speaker-name">Sandy Tri Gustono</strong> <div class="talk-title">TBD</div></div>
+<div class="talk"><strong class="speaker-name">Thorsten Markmann</strong> <div class="talk-title">TBD</div></div>
+<div class="talk"><strong class="speaker-name">Christian CJ</strong> <div class="talk-title">TBD</div></div>
+<div class="highlight-qa">15 minutes panel Q&amp;A</div></td>
+</tr>
+<tr class="plenary-row"><td class="time">14:30 - 15:00</td><td class="event highlight-break" colspan="4"><strong>Coffee Break</strong></td></tr>
+<tr class="parallel-row"><td class="time">15:00 – 16:30*</td>
+<td class="session" colspan="2"><h3>Session 5A: Data Science in Environmental &amp; Earth Sciences (I)</h3>
+<div class="convener"><span class="convener-label">Convener:</span> <span class="convener-name">Tao Feng</span></div>
+<div class="talk"><strong class="speaker-name">Tao Feng</strong> <div class="talk-title">TBD</div></div>
+<div class="talk"><strong class="speaker-name">Yiwen Zhang</strong> <div class="talk-title">TBD</div></div>
+<div class="talk"><strong class="speaker-name">Ricky Winarko</strong> <div class="talk-title">TBD: SARImpact: Developing an Intuitive Interface for On-Demand Disaster Mapping</div></div>
+<div class="talk"><strong class="speaker-name">Denny</strong> <div class="talk-title">Physics-Informed Machine Learning of Interferometric Synthetic Aperture Radar Observations at Volcanoes</div></div>
+<div class="talk"><strong class="speaker-name">Shi Tong Chin</strong> <div class="talk-title">TBD: From Overpass to Damage Map: Scaling EOS Rapid Disaster Response for Next-Generation SAR Missions</div></div>
+<div class="talk"><strong class="speaker-name">Shichuan Sun</strong> <div class="talk-title">TBD (might be AI related earth core research)</div></div>
+<div class="highlight-qa">15 minutes panel Q&amp;A</div></td>
+<td class="session" colspan="2"><h3>Session 5B: Coastal &amp; Marine Environments (II)</h3>
+<div class="convener"><span class="convener-label">Convener:</span> <span class="convener-name">Kyle Morgan</span></div>
+<div class="talk"><strong class="speaker-name">Lucas Koh</strong> <div class="talk-title">Quantifying optical drivers of light limitation on coral reefs in Southeast Asia</div></div>
+<div class="talk"><strong class="speaker-name">Nisha</strong> <div class="talk-title">Long-Term Environmental Influences on Mangrove Soil Carbon Stocks: Insights from Palaeoecology and Geochemistry</div></div>
+<div class="talk"><strong class="speaker-name">Darryl Valino</strong> <div class="talk-title">Estimating 3D coral morphological traits from traditional 2D imagery</div></div>
+<div class="talk"><strong class="speaker-name">Kristy Chang</strong> <div class="talk-title">Heterotrophic fixation of CO2, a new pathway for valorization?</div></div>
+<div class="talk"><strong class="speaker-name">Regine Tiong</strong> <div class="talk-title">Impact of environmental change on Marine turtle populations</div></div>
+<div class="talk"><strong class="speaker-name">Adam Rexroade</strong> <div class="talk-title">Seasonal wetting and drying dynamics drive greenhouse gas emissions across Australia’s river network</div></div>
+<div class="talk"><strong class="speaker-name">Rahul Kumar</strong> <div class="talk-title">TBD : Beach ridges, sea level and cyclones</div></div>
+<div class="highlight-qa">15 minutes panel Q&amp;A</div></td>
+</tr>
+<tr class="plenary-row"><td class="time">16:30 – 16:45</td><td class="event highlight-panel" colspan="4"><strong>Awards Presentation</strong><span class="event-detail">Flash Talk Challenge</span><span class="event-detail">Best Presentation</span></td></tr>
+<tr class="plenary-row"><td class="time">16:45 - 17:00</td><td class="event highlight-keynote" colspan="4"><strong>Closing Remarks</strong><span class="event-detail">Prof. Steve Yim</span></td></tr>
+</table>
+</div>
+<p class="programme-note">*Afternoon parallel sessions are provisional and may be adjusted depending on presentation sign-up numbers. Final session allocations and timings will be confirmed once registrations close.</p>
+</section>
+</main>
+<footer>
+<strong>Conference organising committee:</strong> Steve Yim, Jhoanna Jovero, Yasmin Basir, Yiwen Zhang, Aaron Espinosa<br/>
+<strong>Supported by:</strong> EOS Advancement Office, ASE Administration Team, ASE GSC, Research Fellow representatives
   </footer>
-
-  <script>
+<script>
+    // Keep the original day-switch behaviour, without relying on a global event variable.
     function showDay(dayId, clickedButton) {
       document.querySelectorAll('.day').forEach(day => day.classList.remove('active'));
       document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
       document.getElementById(dayId).classList.add('active');
       clickedButton.classList.add('active');
       clickedButton.setAttribute('aria-selected', 'true');
-
       document.querySelectorAll('.tab').forEach(tab => {
-        if (tab !== clickedButton) {
-          tab.setAttribute('aria-selected', 'false');
-        }
+        if (tab !== clickedButton) tab.setAttribute('aria-selected', 'false');
       });
     }
-
-    // Generate mobile cards from the same tables.
+    // Mobile cards are generated from the same schedule table to prevent content drift.
     document.querySelectorAll('.day').forEach(day => {
       const mobile = day.querySelector('.mobile-agenda');
       const header = day.querySelector('.table-head');
       const rooms = document.createElement('p');
       rooms.className = 'mobile-venues';
-      rooms.textContent = Array.from(header.querySelectorAll('th'))
-        .slice(1)
-        .map(th => th.innerText.trim().replace(/\s+/g, ' '))
-        .join(' · ');
+      rooms.textContent = Array.from(header.querySelectorAll('th')).slice(1).map(th => th.innerText.trim().replace(/\s+/g,' ')).join(' · ');
       mobile.appendChild(rooms);
-
       day.querySelectorAll('.schedule tr:not(.table-head)').forEach(tr => {
         const card = document.createElement('article');
         card.className = 'mobile-card';
-
         const tm = document.createElement('div');
         tm.className = 'mobile-time';
         tm.textContent = tr.querySelector('.time').textContent;
         card.appendChild(tm);
-
         if (tr.classList.contains('parallel-row')) {
           const sessions = tr.querySelectorAll('td.session');
           sessions.forEach((cell, index) => {
             const block = document.createElement('div');
             block.className = 'mobile-parallel';
-
             const location = document.createElement('div');
             location.className = 'mobile-location';
             location.textContent = index === 0 ? 'Auditorium' : 'Cypress Hall 1';
             block.appendChild(location);
-
             const details = document.createElement('div');
             details.className = 'session';
             details.innerHTML = cell.innerHTML;
@@ -634,16 +426,13 @@ nav button:focus-visible {
         } else {
           const event = tr.querySelector('.event');
           const block = document.createElement('div');
-          block.className = 'mobile-event ' + Array.from(event.classList)
-            .filter(c => c.startsWith('highlight-'))
-            .join(' ');
+          block.className = 'mobile-event ' + Array.from(event.classList).filter(c => c.startsWith('highlight-')).join(' ');
           block.innerHTML = event.innerHTML;
           card.appendChild(block);
         }
         mobile.appendChild(card);
       });
     });
-
     document.body.classList.add('js-ready');
   </script>
 </body>
